@@ -34,5 +34,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 # the makefile doesn't have an install option, so we need to use the special in-source makefile
 cmake . \
 -G"Unix Makefiles" \
--DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
-make -j 2
+-DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION} \
+-DUSE_OPENMP=1 \
+-DNUM_CORES=2
+make
