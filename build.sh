@@ -28,8 +28,8 @@ elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
 else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
-tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}/${NAME}-${VERSION} --skip-old-files --strip-components=1
 mkdir -p ${WORKSPACE}/${NAME}-${VERSION}
+tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}/${NAME}-${VERSION} --skip-old-files --strip-components=1
 cd ${WORKSPACE}/${NAME}-${VERSION}
 # the makefile doesn't have an install option, so we need to use the special in-source makefile
 cmake . \
