@@ -40,4 +40,4 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 # make
 export NUM_CORES=2
 export USE_OPENMP=1
-make 
+make TARGET=NEHALEM
