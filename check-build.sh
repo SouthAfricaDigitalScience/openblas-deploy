@@ -7,7 +7,7 @@ make test
 
 echo $?
 
-make install # DESTDIR=$SOFT_DIR
+make install PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
 mkdir -p ${REPO_DIR}
 mkdir -p modules
 (

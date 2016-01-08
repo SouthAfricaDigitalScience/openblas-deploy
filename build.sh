@@ -2,7 +2,6 @@
 # OpenBLAS depoy scripts
 . /etc/profile.d/modules.sh
 module add ci
-module add cmake
 module add gcc/${GCC_VERSION}
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
@@ -32,9 +31,13 @@ mkdir -p ${WORKSPACE}/${NAME}-${VERSION}
 tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}/${NAME}-${VERSION} --skip-old-files --strip-components=1
 cd ${WORKSPACE}/${NAME}-${VERSION}
 # the makefile doesn't have an install option, so we need to use the special in-source makefile
-cmake . \
--G"Unix Makefiles" \
--DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION} \
--DUSE_OPENMP=1 \
--DNUM_CORES=2
-make
+# CMake apparently is experimental :-/
+# cmake . \
+# -G"Unix Makefiles" \
+# -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION} \
+# -DUSE_OPENMP=1 \
+# -DNUM_CORES=2
+# make
+export NUM_CORES=2
+export USE_OPENMP=1
+make 

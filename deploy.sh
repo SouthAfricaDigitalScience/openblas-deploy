@@ -7,12 +7,14 @@ module add gcc/${GCC_VERSION}
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
-cmake . \
--G"Unix Makefiles" \
--DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
-make -j 2
-
-make install
+# cmake . \
+# -G"Unix Makefiles" \
+# -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
+# make -j 2
+make clean
+export NUM_CORES=2
+export USE_OPENMP=1
+make install PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
 (
