@@ -37,7 +37,9 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 # -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION} \
 # -DUSE_OPENMP=1 \
 # -DNUM_CORES=2
-# make
+echo "making clean"
+
+make clean
 export NUM_CORES=2
 export USE_OPENMP=1
 make TARGET=NEHALEM

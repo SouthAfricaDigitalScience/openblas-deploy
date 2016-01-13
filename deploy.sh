@@ -14,6 +14,7 @@ echo "All tests have passed, will now build into ${SOFT_DIR}"
 make clean
 export NUM_CORES=2
 export USE_OPENMP=1
+make TARGET=NEHALEM
 make install PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
