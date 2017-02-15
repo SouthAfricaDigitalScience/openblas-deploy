@@ -45,7 +45,7 @@ wget https://gist.githubusercontent.com/xianyi/6930656/raw/1b5868547a5277729d33d
 # Compile it
 gcc -o cblas-test -I${OPENBLAS_DIR}/include -L${OPENBLAS_DIR}/lib test_cblas_dgemm.c -lopenblas -lpthread -lgfortran
 # EXECUTE !
-./cblas-test
+./cblas-test > cblas-test.out
 
 echo "Testing FORTRAN interface in c"
 #  Get the file
@@ -53,4 +53,4 @@ wget https://gist.githubusercontent.com/xianyi/5780018/raw/c1d93058a2f61b88b9dd4
 # compile it
 gcc -o time_dgemm -fopenmp time_dgemm.c ${OPENBLAS_DIR}/lib/libopenblas.a
 # execute it
-time ./time_dgemm 1000 1000 1000
+time ./time_dgemm 1000 1000 1000s > time_dgemm.out
