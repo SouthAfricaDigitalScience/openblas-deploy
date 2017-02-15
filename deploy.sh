@@ -12,7 +12,7 @@ echo "All tests have passed, will now build into ${SOFT_DIR}"
 # -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
 # make -j 2
 make clean
-export NUM_CORES=2
+export NUM_CORES=1
 export USE_OPENMP=1
 make TARGET=NEHALEM
 make install PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
@@ -33,6 +33,9 @@ setenv OPENBLAS_VERSION       $VERSION
 setenv OPENBLAS_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-$GCC_VERSION
 prepend-path LD_LIBRARY_PATH   $::env(OPENBLAS_DIR)/lib
 prepend-path CFLAGS           "-I$::env(OPENBLAS_DIR)/include"
+prepend-path CPPFLAGS           "-I$::env(OPENBLAS_DIR)/include"
 prepend-path LDFLAGS          "-I$::env(OPENBLAS_DIR)/lib"
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+module  avail ${NAME}
+module  add ${NAME}/${VERSION}

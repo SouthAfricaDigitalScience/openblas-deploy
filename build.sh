@@ -40,6 +40,6 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "making clean"
 
 make clean
-export NUM_CORES=2
+#export NUM_CORES=2
 export USE_OPENMP=1
 make TARGET=NEHALEM
