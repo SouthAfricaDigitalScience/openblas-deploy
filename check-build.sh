@@ -38,12 +38,14 @@ cp modules/$VERSION ${LIBRARIES_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
 module  avail ${NAME}
 
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
-
+echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
 echo "Testing cblas"
 # get the file
 wget https://gist.githubusercontent.com/xianyi/6930656/raw/1b5868547a5277729d33dac62678a66ff65256f3/test_cblas_dgemm.c
 # Compile it
+echo "compiling with gcc. using"
 gcc -o cblas-test -I${OPENBLAS_DIR}/include -L${OPENBLAS_DIR}/lib test_cblas_dgemm.c -lopenblas -lpthread -lgfortran
+echo "executing !"
 # EXECUTE !
 ./cblas-test > cblas-test.out
 
