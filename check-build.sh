@@ -31,8 +31,8 @@ prepend-path CPPFLAGS                     "-I$::env(OPENBLAS_DIR)/include"
 MODULE_FILE
 ) > modules/$VERSION
 
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
-cp modules/$VERSION ${LIBRARIES_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+mkdir -p ${LIBRARIES}/${NAME}
+cp modules/$VERSION ${LIBRARIES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
 
 # check module availability
 

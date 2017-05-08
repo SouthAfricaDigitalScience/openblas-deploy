@@ -16,8 +16,8 @@ export NUM_CORES=1
 export USE_OPENMP=1
 make TARGET=NEHALEM
 make install PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
-echo "Creating the modules file directory ${LIBRARIES_MODULES}"
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+echo "Creating the modules file directory ${LIBRARIES}"
+mkdir -p ${LIBRARIES}/${NAME}
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -36,6 +36,6 @@ prepend-path CFLAGS           "-I$::env(OPENBLAS_DIR)/include"
 prepend-path CPPFLAGS           "-I$::env(OPENBLAS_DIR)/include"
 prepend-path LDFLAGS          "-I$::env(OPENBLAS_DIR)/lib"
 MODULE_FILE
-) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+) > ${LIBRARIES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
 module  avail ${NAME}
 module  add ${NAME}/${VERSION}
