@@ -42,4 +42,5 @@ echo "making clean"
 make clean
 export NUM_CORES=1
 export USE_OPENMP=1
+export NO_PARALLEL_MAKE=1
 make TARGET=NEHALEM
