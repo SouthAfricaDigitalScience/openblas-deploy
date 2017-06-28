@@ -34,8 +34,8 @@ setenv OPENBLAS_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(A
 prepend-path LD_LIBRARY_PATH   $::env(OPENBLAS_DIR)/lib
 prepend-path CFLAGS           "-I$::env(OPENBLAS_DIR)/include"
 prepend-path CPPFLAGS           "-I$::env(OPENBLAS_DIR)/include"
-prepend-path LDFLAGS          "-I$::env(OPENBLAS_DIR)/lib"
+prepend-path LDFLAGS          "-L$::env(OPENBLAS_DIR)/lib"
 MODULE_FILE
 ) > ${LIBRARIES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
 module  avail ${NAME}
-module  add ${NAME}/${VERSION}
+module  add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
