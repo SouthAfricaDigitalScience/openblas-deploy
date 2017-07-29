@@ -23,7 +23,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       OPENBLAS_VERSION           $VERSION
-setenv       OPENBLAS_DIR                        /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$::env(NAME)/$::env(VERSION)-gcc-$::env(GCC_VERSION)
+setenv       OPENBLAS_DIR                        /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$(NAME)/$(VERSION)-gcc-$::env(GCC_VERSION)
 prepend-path LD_LIBRARY_PATH        $::env(OPENBLAS_DIR)/lib
 prepend-path LDFLAGS                         "-L$::env(OPENBLAS_DIR)/lib"
 prepend-path CFLAGS                           "-I$::env(OPENBLAS_DIR)/include"
